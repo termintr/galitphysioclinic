@@ -56,42 +56,31 @@ function PrivacyPolicy({ isOpen, onClose }: PrivacyPolicyProps) {
         style={{
           backgroundColor: '#fff',
           color: '#333',
-          padding: '30px',
           borderRadius: '12px',
           maxWidth: '600px',
           width: '100%',
           maxHeight: '80vh',
-          overflowY: 'auto',
-          textAlign: 'right',
-          fontSize: '0.95rem',
-          lineHeight: '1.7',
           position: 'relative',
-          boxShadow: '0 10px 40px rgba(0,0,0,0.3)'
+          boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
+          display: 'flex',
+          flexDirection: 'column'
         }}
       >
         <button
           onClick={onClose}
           aria-label="סגור מדיניות פרטיות"
-          style={{
-            position: 'absolute',
-            top: '15px',
-            left: '15px',
-            background: 'transparent',
-            border: 'none',
-            fontSize: '1.5rem',
-            cursor: 'pointer',
-            color: '#666',
-            width: '32px',
-            height: '32px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: '50%'
-          }}
+          className="modal-close-button"
         >
           ✕
         </button>
         
+        <div style={{
+          padding: '30px',
+          overflowY: 'auto',
+          textAlign: 'right',
+          fontSize: '0.95rem',
+          lineHeight: '1.7'
+        }}>
         <h3 id="privacy-title" style={{ marginBottom: '15px', fontSize: '1.3rem', color: '#6b46c1' }}>
           מדיניות פרטיות
         </h3>
@@ -178,6 +167,7 @@ function PrivacyPolicy({ isOpen, onClose }: PrivacyPolicyProps) {
           אנו שומרים לעצמנו את הזכות לעדכן מדיניות זו מעת לעת. 
           שינויים מהותיים יפורסמו באתר.
         </p>
+        </div>
       </div>
     </div>
   )

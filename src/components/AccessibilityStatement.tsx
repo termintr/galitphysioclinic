@@ -58,43 +58,31 @@ function AccessibilityStatement({ isOpen, onClose }: AccessibilityStatementProps
         style={{
           backgroundColor: '#fff',
           color: '#333',
-          padding: '30px',
           borderRadius: '12px',
           maxWidth: '500px',
           width: '100%',
           maxHeight: '80vh',
-          overflowY: 'auto',
-          textAlign: 'right',
-          fontSize: '0.95rem',
-          lineHeight: '1.7',
           position: 'relative',
-          boxShadow: '0 10px 40px rgba(0,0,0,0.3)'
+          boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
+          display: 'flex',
+          flexDirection: 'column'
         }}
       >
         <button
           onClick={onClose}
           aria-label="סגור הצהרת נגישות"
-          style={{
-            position: 'absolute',
-            top: '15px',
-            left: '15px',
-            background: 'transparent',
-            border: 'none',
-            fontSize: '1.5rem',
-            cursor: 'pointer',
-            color: '#666',
-            width: '32px',
-            height: '32px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: '50%',
-            transition: 'background 0.2s'
-          }}
+          className="modal-close-button"
         >
           ✕
         </button>
         
+        <div style={{
+          padding: '30px',
+          overflowY: 'auto',
+          textAlign: 'right',
+          fontSize: '0.95rem',
+          lineHeight: '1.7'
+        }}>
         <h3 id="accessibility-title" style={{ marginBottom: '15px', fontSize: '1.3rem', color: '#6b46c1' }}>
           הצהרת נגישות
         </h3>
@@ -167,6 +155,7 @@ function AccessibilityStatement({ isOpen, onClose }: AccessibilityStatementProps
         <p style={{ marginTop: '15px', fontSize: '0.85rem', opacity: 0.7 }}>
           תאריך עדכון הצהרת הנגישות: דצמבר 2025
         </p>
+        </div>
       </div>
     </div>
   )

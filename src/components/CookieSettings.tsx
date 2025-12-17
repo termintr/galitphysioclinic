@@ -80,40 +80,31 @@ function CookieSettings({ isOpen, onClose }: CookieSettingsProps) {
         style={{
           backgroundColor: '#fff',
           color: '#333',
-          padding: '30px',
           borderRadius: '12px',
           maxWidth: '450px',
           width: '100%',
-          textAlign: 'right',
-          fontSize: '0.95rem',
-          lineHeight: '1.7',
+          maxHeight: '80vh',
           position: 'relative',
-          boxShadow: '0 10px 40px rgba(0,0,0,0.3)'
+          boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
+          display: 'flex',
+          flexDirection: 'column'
         }}
       >
         <button
           onClick={onClose}
           aria-label="סגור הגדרות עוגיות"
-          style={{
-            position: 'absolute',
-            top: '15px',
-            left: '15px',
-            background: 'transparent',
-            border: 'none',
-            fontSize: '1.5rem',
-            cursor: 'pointer',
-            color: '#666',
-            width: '32px',
-            height: '32px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: '50%'
-          }}
+          className="modal-close-button"
         >
           ✕
         </button>
         
+        <div style={{
+          padding: '30px',
+          overflowY: 'auto',
+          textAlign: 'right',
+          fontSize: '0.95rem',
+          lineHeight: '1.7'
+        }}>
         <h3 id="cookie-settings-title" style={{ marginBottom: '20px', fontSize: '1.3rem', color: '#6b46c1' }}>
           🍪 הגדרות עוגיות
         </h3>
@@ -224,6 +215,7 @@ function CookieSettings({ isOpen, onClose }: CookieSettingsProps) {
           >
             ביטול
           </button>
+        </div>
         </div>
       </div>
     </div>
