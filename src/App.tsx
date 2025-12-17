@@ -1,20 +1,35 @@
 import './App.css'
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { useEffect, useCallback } from 'react'
 import Layout from './components/Layout'
 import MainPage from './components/MainPage'
 import ProfessionalInfo from './components/ProfessionalInfo'
-import { trackPageView, autoTrack } from './utils/analytics'
+import CookieConsent from './components/CookieConsent'
+import { trackPageView, autoTrack, loadGoogleAnalytics, isAnalyticsEnabled } from './utils/analytics'
 
 function AppContent() {
-  const navigate = useNavigate()
   const location = useLocation()
 
-  // Initialize automatic tracking
+  // Initialize automatic tracking (only if analytics is enabled)
   useEffect(() => {
-    autoTrack.externalLinks()
-    autoTrack.forms()
+    if (isAnalyticsEnabled()) {
+      autoTrack.externalLinks()
+      autoTrack.forms()
+    }
   }, [])
+
+  // Handle cookie consent
+  const handleCookieConsent = useCallback((accepted: boolean) => {
+    if (accepted) {
+      loadGoogleAnalytics().then(() => {
+        // Initialize auto tracking after GA loads
+        autoTrack.externalLinks()
+        autoTrack.forms()
+        // Track the current page
+        trackPageView(location.pathname + location.search)
+      })
+    }
+  }, [location.pathname, location.search])
 
   // Scroll to top on route change, but not when there's a hash
   useEffect(() => {
@@ -35,18 +50,23 @@ function AppContent() {
     
     scrollToTop()
     
-    // Track page views with Google Analytics
-    trackPageView(location.pathname + location.search)
+    // Track page views with Google Analytics (only if enabled)
+    if (isAnalyticsEnabled()) {
+      trackPageView(location.pathname + location.search)
+    }
   }, [location.pathname])
 
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/professional-info" element={<ProfessionalInfo />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Layout>
+    <>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/professional-info" element={<ProfessionalInfo />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Layout>
+      <CookieConsent onConsent={handleCookieConsent} />
+    </>
   )
 }
 

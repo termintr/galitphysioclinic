@@ -118,8 +118,33 @@ function Layout({ children }: LayoutProps) {
     }
   }
 
+  // Handle Escape key to close menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && menuOpen) {
+        setMenuOpen(false)
+      }
+    }
+    
+    if (menuOpen) {
+      document.addEventListener('keydown', handleKeyDown)
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
   return (
     <div className="App">
+      {/* Skip to main content link for accessibility */}
+      <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
+      
       {/* Floating Waze Button */}
       <button className="waze-float" onClick={handleWaze} aria-label="נווט עם וויז">
         <img src={wazeImg} alt="נווט עם וויז" />
@@ -174,13 +199,26 @@ function Layout({ children }: LayoutProps) {
           <img src={topbarLogo} alt="גלית ריכטר" />
         </div>
 
-        <button className="hamburger" aria-label="תפריט" onClick={() => setMenuOpen(!menuOpen)}>
-          <img src={hamburgerImg} alt="תפריט" />
+        <button 
+          className="hamburger" 
+          aria-label="תפריט ניווט"
+          aria-expanded={menuOpen}
+          aria-controls="main-menu"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <img src={hamburgerImg} alt="" aria-hidden="true" />
         </button>
       </nav>
 
       {/* Full Screen Menu Overlay */}
-      <div className={`menu-overlay ${menuOpen ? 'open' : ''}`}>
+      <div 
+        id="main-menu"
+        className={`menu-overlay ${menuOpen ? 'open' : ''}`}
+        role={menuOpen ? "dialog" : undefined}
+        aria-modal={menuOpen ? "true" : undefined}
+        aria-label={menuOpen ? "תפריט ניווט ראשי" : undefined}
+        aria-hidden={!menuOpen}
+      >
         <div className="menu-container">
           <button className="menu-close-button" onClick={() => setMenuOpen(false)} aria-label="סגור תפריט">
             ✕

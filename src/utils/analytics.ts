@@ -9,6 +9,35 @@ declare global {
 // Replace this with your actual Google Analytics Measurement ID
 export const GA_MEASUREMENT_ID = 'G-0QJ8TYQPMV'
 
+// Track if analytics has been initialized
+let analyticsEnabled = false
+
+// Load Google Analytics script dynamically
+export const loadGoogleAnalytics = (): Promise<void> => {
+  return new Promise((resolve) => {
+    if (analyticsEnabled) {
+      resolve()
+      return
+    }
+
+    // Create and load the GA script
+    const script = document.createElement('script')
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`
+    script.async = true
+    script.onload = () => {
+      // Initialize GA
+      window.gtag('js', new Date())
+      window.gtag('config', GA_MEASUREMENT_ID)
+      analyticsEnabled = true
+      resolve()
+    }
+    document.head.appendChild(script)
+  })
+}
+
+// Check if analytics is enabled
+export const isAnalyticsEnabled = () => analyticsEnabled
+
 // Event categories for better organization
 export const EVENT_CATEGORIES = {
   NAVIGATION: 'navigation',
@@ -50,6 +79,7 @@ export const EVENT_ACTIONS = {
 
 // Track page views
 export const trackPageView = (path: string) => {
+  if (!analyticsEnabled) return
   if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
     window.gtag('config', GA_MEASUREMENT_ID, {
       page_path: path
@@ -65,6 +95,7 @@ export const trackEvent = (
   value?: number,
   customParameters?: Record<string, any>
 ) => {
+  if (!analyticsEnabled) return
   if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
     const eventData: any = {
       event_category: category,

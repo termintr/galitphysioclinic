@@ -229,13 +229,14 @@ function MainPage() {
     <>
       {/* Hero Carousel */}
       <section id="hero" className="hero" itemScope itemType="https://schema.org/MedicalBusiness" role="banner">
-        <div className="carousel">
+        <div className="carousel" aria-live="off" aria-atomic="true">
           {carouselImages.map((image, index) => (
             <img
               key={index}
               src={image}
-              alt={`תמונת קליניקה ${index + 1}`}
+              alt={`תמונת קליניקה ${index + 1} מתוך ${carouselImages.length}`}
               className={`carousel-image ${index === currentImageIndex ? 'active' : ''}`}
+              aria-hidden={index !== currentImageIndex}
             />
           ))}
           <div className="carousel-overlay">
@@ -251,7 +252,7 @@ function MainPage() {
       </section>
 
       {/* Main Content */}
-      <main role="main">
+      <main id="main-content" role="main">
         {/* About Section */}
         <section id="about" className="about" itemScope itemType="https://schema.org/Person">
           <h2>מי אני</h2>
@@ -277,7 +278,7 @@ function MainPage() {
           <div className="services-grid" itemProp="itemListElement">
             <div className="service-card" itemScope itemType="https://schema.org/Offer">
               <h3 itemProp="name">בתחום רצפת האגן:</h3>
-              <ul>
+              <ul id="pelvic-floor-list">
                 {pelvicFloorItems.slice(0, 2).map((item, index) => (
                   <li key={index}><strong>{item}</strong></li>
                 ))}
@@ -288,7 +289,9 @@ function MainPage() {
                 }
               </ul>
               <button 
-                className="expand-button" 
+                className="expand-button"
+                aria-expanded={pelvicFloorExpanded}
+                aria-controls="pelvic-floor-list"
                 onClick={() => {
                   const newState = !pelvicFloorExpanded
                   setPelvicFloorExpanded(newState)
@@ -306,7 +309,7 @@ function MainPage() {
             </div>
             <div className="service-card" itemScope itemType="https://schema.org/Offer">
               <h3 itemProp="name">בתחום הוסטיבולרי:</h3>
-              <ul>
+              <ul id="vestibular-list">
                 {vestibularItems.slice(0, 1).map((item, index) => (
                   <li key={index}><strong>{item}</strong></li>
                 ))}
@@ -317,7 +320,9 @@ function MainPage() {
                 }
               </ul>
               <button 
-                className="expand-button" 
+                className="expand-button"
+                aria-expanded={vestibularExpanded}
+                aria-controls="vestibular-list"
                 onClick={() => {
                   const newState = !vestibularExpanded
                   setVestibularExpanded(newState)
@@ -353,7 +358,8 @@ function MainPage() {
                 }
               </ul>
               <button 
-                className="expand-button" 
+                className="expand-button"
+                aria-expanded={pelvicFloorTechniquesExpanded}
                 onClick={() => setPelvicFloorTechniquesExpanded(!pelvicFloorTechniquesExpanded)}
               >
                 {pelvicFloorTechniquesExpanded ? 'ראה פחות' : 'ראה עוד...'}
@@ -373,7 +379,8 @@ function MainPage() {
                 }
               </ul>
               <button 
-                className="expand-button" 
+                className="expand-button"
+                aria-expanded={vestibularTechniquesExpanded}
                 onClick={() => setVestibularTechniquesExpanded(!vestibularTechniquesExpanded)}
               >
                 {vestibularTechniquesExpanded ? 'ראה פחות' : 'ראה עוד...'}
@@ -385,15 +392,23 @@ function MainPage() {
         {/* Recommendations Carousel Section */}
         <section id="testimonials" className="testimonials">
           <h2>מטופלים מספרים</h2>
-          <div id="recommendation-carousel" className="recommendation-carousel" role="region" aria-label="המלצות מטופלים">
+          <div 
+            id="recommendation-carousel" 
+            className="recommendation-carousel" 
+            role="region" 
+            aria-label="המלצות מטופלים"
+            aria-live="polite"
+            aria-atomic="false"
+          >
             <div className="recommendation-container">
               {recommendationImages.map((image, index) => (
                 <img 
                   key={index}
                   src={image} 
-                  alt={`המלצת מטופל ${index + 1} - פיזיותרפיה גלית ריכטר`} 
+                  alt={`המלצת מטופל ${index + 1} מתוך ${recommendationImages.length} - פיזיותרפיה גלית ריכטר`} 
                   className={`recommendation-image ${index === recommendationIndex ? 'active' : ''}`}
                   loading="lazy"
+                  aria-hidden={index !== recommendationIndex}
                 />
               ))}
               
