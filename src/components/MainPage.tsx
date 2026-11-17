@@ -11,6 +11,7 @@ import recommendation2 from '../../public/assets/recommendation2.jpg'
 import recommendation3 from '../../public/assets/recommendation3.jpg'
 import recommendation4 from '../../public/assets/recommendation4.jpg'
 import recommendation5 from '../../public/assets/recommendation5.jpeg'
+import recommendation6 from '../../public/assets/recommendation6.jpeg'
 import Footer from './Footer'
 
 function MainPage() {
@@ -36,7 +37,7 @@ function MainPage() {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false)
 
   const carouselImages = [carouselMain, carousel1, carousel2, carousel3]
-  const recommendationImages = [recommendation1, recommendation2, recommendation3, recommendation4, recommendation5]
+  const recommendationImages = [recommendation1, recommendation2, recommendation3, recommendation4, recommendation5, recommendation6]
 
   const pelvicFloorItems = [
     "כאבים ביחסים",

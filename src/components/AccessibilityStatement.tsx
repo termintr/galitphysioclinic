@@ -153,7 +153,7 @@ function AccessibilityStatement({ isOpen, onClose }: AccessibilityStatementProps
           אימייל: <a href="mailto:galitush1@gmail.com" style={{ color: '#6b46c1' }}>galitush1@gmail.com</a>
         </p>
         <p style={{ marginTop: '15px', fontSize: '0.85rem', opacity: 0.7 }}>
-          תאריך עדכון הצהרת הנגישות: דצמבר 2025
+          תאריך עדכון הצהרת הנגישות: נובמבר 2026
         </p>
         </div>
       </div>

@@ -86,7 +86,7 @@ function TermsOfUse({ isOpen, onClose }: TermsOfUseProps) {
         </h3>
         
         <p style={{ fontSize: '0.85rem', opacity: 0.7, marginBottom: '15px' }}>
-          עודכן לאחרונה: דצמבר 2025
+          עודכן לאחרונה: נובמבר 2026
         </p>
 
         <p>

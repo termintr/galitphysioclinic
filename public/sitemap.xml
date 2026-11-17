@@ -5,7 +5,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://galitrichter.com/</loc>
-    <lastmod>2025-07-12</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://galitrichter.com/" />
@@ -16,7 +16,7 @@
   <!-- Professional Info Page -->
   <url>
     <loc>https://galitrichter.com/professional-info</loc>
-    <lastmod>2025-07-12</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://galitrichter.com/professional-info" />
@@ -27,35 +27,35 @@
   <!-- Main Page Sections -->
   <url>
     <loc>https://galitrichter.com/#about</loc>
-    <lastmod>2025-07-12</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://galitrichter.com/#services</loc>
-    <lastmod>2025-07-12</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://galitrichter.com/#techniques</loc>
-    <lastmod>2025-07-12</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://galitrichter.com/#testimonials</loc>
-    <lastmod>2025-07-12</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://galitrichter.com/#contact</loc>
-    <lastmod>2025-07-12</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -63,14 +63,14 @@
   <!-- Professional Info Sections -->
   <url>
     <loc>https://galitrichter.com/professional-info#pelvic-floor</loc>
-    <lastmod>2025-07-12</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://galitrichter.com/professional-info#vestibular</loc>
-    <lastmod>2025-07-12</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
