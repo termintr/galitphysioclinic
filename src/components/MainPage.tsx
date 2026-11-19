@@ -204,7 +204,7 @@ function MainPage() {
       'service_galitclinic', // Replace with your EmailJS service ID
       'template_contact_clinic', // Replace with your EmailJS template ID
       templateParams,
-      '0SNKk5cvEsXIiQtfF' // Replace with your EmailJS public key
+      { publicKey: '0SNKk5cvEsXIiQtfF' }
     )
     .then((response) => {
       console.log('SUCCESS!', response.status, response.text)
